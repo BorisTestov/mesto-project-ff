@@ -4,6 +4,8 @@ import { initialCards } from "./components/cards";
 import { createCard, deleteCard, toggleLike } from "./components/card";
 import {openModal, closeModal} from "./components/modal";
 
+import { clearValidation, enableValidation } from "./components/validation.js";
+
 
 const placesList = document.querySelector('.places__list');
 const cardTemplate = document.querySelector("#card-template").content;
@@ -28,11 +30,22 @@ const imagePopup = document.querySelector(".popup_type_image");
 const popupImage = imagePopup.querySelector('.popup__image');
 const popupCaption = imagePopup.querySelector('.popup__caption');
 
+const validationConfig = {
+    formSelector: ".popup__form",
+    inputSelector: ".popup__input",
+    submitButtonSelector: ".popup__button",
+    inactiveButtonClass: "popup__button_disabled",
+    inputErrorClass: "popup__input_type_error",
+    errorClass: "popup__error_visible",
+};
+
+enableValidation(validationConfig);
 
 function handleProfileEdit() {
     profileNameInput.value = profileTitle.textContent;
     profileDescriptionInput.value = profileDescription.textContent;
     openModal(profileEditPopup);
+    clearValidation(profileEditForm, validationConfig);
 }
 
 function handleProfileFormSubmit(evt) {
