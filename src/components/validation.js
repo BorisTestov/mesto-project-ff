@@ -12,9 +12,6 @@ function enableValidation(validationConfig) {
         toggleButtonState(formInputs, formBtn, validationConfig);
         formInputs.forEach((inputElement) => {
             inputElement.addEventListener("input", () => {
-                console.log(formElement);
-                console.log(inputElement);
-                console.log(validationConfig);
                 checkInputValidity(formElement, inputElement, validationConfig);
                 toggleButtonState(formInputs, formBtn, validationConfig);
             });

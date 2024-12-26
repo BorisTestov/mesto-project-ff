@@ -8,11 +8,11 @@ const config = {
     }
 }
 
-const defaultUser = {
-    "name": "Жак-Ив Кусто",
-    "about": "Исследователь океана",
-    "avatar": baseAvatar,
-    "_id": "-1"
+function handleResponse(res) {
+    if (res.ok){
+        return res.json()
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
 }
 
 function getAboutMe() {
@@ -20,10 +20,7 @@ function getAboutMe() {
         headers: config.headers
     })
         .then((res) =>{
-            if (res.ok){
-                return res.json()
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
+            return handleResponse(res);
         })
 }
 
@@ -32,10 +29,7 @@ function getInitialCards() {
         headers: config.headers
     })
         .then((res) => {
-            if (res.ok){
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
+            return handleResponse(res);
         })
 }
 
@@ -49,10 +43,7 @@ function patchProfile(name, description){
         })
     })
         .then((res) => {
-            if (res.ok){
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
+            return handleResponse(res);
         })
 }
 
@@ -66,10 +57,7 @@ function postNewCard(name, link){
         })
     })
         .then((res) => {
-            if (res.ok){
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
+            return handleResponse(res);
         })
 }
 
@@ -79,10 +67,7 @@ function deleteCard(cardId){
         method: "DELETE",
     })
         .then((res) => {
-            if (res.ok){
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
+            return handleResponse(res);
         })
 }
 
@@ -92,10 +77,7 @@ function putLike(cardId){
         method: "PUT",
     })
         .then((res) => {
-            if (res.ok){
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
+            return handleResponse(res);
         })
 }
 
@@ -105,10 +87,7 @@ function deleteLike(cardId){
         method: "DELETE",
     })
         .then((res) => {
-            if (res.ok){
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
+            return handleResponse(res);
         })
 }
 
@@ -121,10 +100,7 @@ function patchAvatar(link) {
         })
     })
         .then((res) => {
-            if (res.ok){
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
+            return handleResponse(res);
         })
 }
 
@@ -133,6 +109,5 @@ export {
     patchProfile,
     postNewCard, deleteCard,
     putLike, deleteLike,
-    patchAvatar,
-    defaultUser
+    patchAvatar
 }

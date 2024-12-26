@@ -6,7 +6,7 @@ import {openModal, closeModal} from "./components/modal";
 
 import {clearValidation, enableValidation} from "./components/validation.js";
 
-import {getAboutMe, getInitialCards, patchProfile, postNewCard, patchAvatar, defaultUser} from "./components/api.js";
+import {getAboutMe, getInitialCards, patchProfile, postNewCard, patchAvatar} from "./components/api.js";
 
 
 const placesList = document.querySelector('.places__list');
@@ -65,8 +65,6 @@ function handleProfileFormSubmit(evt) {
     evt.preventDefault();
 
     profileEditSubmitBtn.textContent = "Сохранение...";
-    console.log(profileNameInput.value, profileDescriptionInput.value);
-
     patchProfile(profileNameInput.value, profileDescriptionInput.value)
         .then((res) => {
             profileTitle.textContent = res.name;
@@ -172,11 +170,4 @@ Promise.all([getAboutMe(), getInitialCards()])
     })
     .catch((err) => {
         console.error("Ошибка получения данных пользователя и карточек:", err)
-
-        profileTitle.textContent = defaultUser.name;
-        profileDescription.textContent = defaultUser.about;
-        profileImage.style.backgroundImage = `url("${defaultUser.avatar}")`;
-        initialCards.forEach((card) => {
-            placesList.append(createCard(cardTemplate, card, deleteCard, toggleLike, handleImageClick, defaultUser));
-        });
     });

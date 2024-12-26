@@ -44,11 +44,11 @@
             <h3 class="popup__title">Редактировать профиль</h3>
             <form class="popup__form" name="edit-profile" novalidate>
                 <input type="text" name="name" class="popup__input popup__input_type_name" placeholder="Имя" required
-                       minlength="2" maxlength="40"
+                       minlength="2" maxlength="40" pattern="^[a-zA-Zа-яА-ЯёЁ\-\s]+$"
                        data-error-message="Разрешены только латинские и кириллические буквы, знаки дефиса и пробелы">
                 <span class="name-error"></span>
                 <input type="text" name="description" class="popup__input popup__input_type_description"
-                       placeholder="Занятие" required minlength="2" maxlength="40"
+                       placeholder="Занятие" required minlength="2" maxlength="40" pattern="^[a-zA-Zа-яА-ЯёЁ\-\s]+$"
                        data-error-message="Разрешены только латинские и кириллические буквы, знаки дефиса и пробелы">
                 <span class="description-error"></span>
                 <button type="submit" class="button popup__button">Сохранить</button>
@@ -61,7 +61,7 @@
             <h3 class="popup__title">Новое место</h3>
             <form class="popup__form" name="new-place" novalidate>
                 <input type="text" name="place-name" class="popup__input popup__input_type_card-name"
-                       placeholder="Название" required minlength="2" maxlength="30"
+                       placeholder="Название" required minlength="2" maxlength="30" pattern="^[a-zA-Zа-яА-ЯёЁ\-\s]+$"
                        data-error-message="Разрешены только латинские и кириллические буквы, знаки дефиса и пробелы">
                 <span class="place-name-error"></span>
                 <input type="url" name="link" class="popup__input popup__input_type_url"
@@ -94,17 +94,6 @@
             <span class="link-error"></span>
             <button type="submit" class="button popup__button">
                 Сохранить
-            </button>
-        </form>
-    </div>
-</div>
-<div class="popup popup_type_remove_card popup_is-animated">
-    <div class="popup__content">
-        <button type="button" class="popup__close"></button>
-        <h3 class="popup__title">Вы уверены</h3>
-        <form class="popup__form" name="remove-card" novalidate>
-            <button type="submit" class="button popup__button">
-                Да
             </button>
         </form>
     </div>
